@@ -268,6 +268,7 @@ PySpark requires Java. Please install a JDK, e.g. JDK 11 or 17, and make sure
 **(6) Sample an already trained model for a given number of SMILES (also retrieves log-likelihoods):**
 
 .. code-block:: bash
+
     # Alternatively, use the pretrained model"gdb20_models/model.trained.node18"
     ./sample_from_model.py \
         -m node18_randomized/models/model.trained.100 \
