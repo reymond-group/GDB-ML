@@ -10,7 +10,7 @@ For a step-by-step map from the manuscript workflow to the repository files,
 software environments, graph-selection procedure, and executable scripts, see
 `REPRODUCIBILITY.rst <REPRODUCIBILITY.rst>`_.
 
-.. image:: https://github.com/Ye-Buehler/GDB-ML/blob/main/docs/GA.jpg
+.. image:: docs/GA.jpg
    :alt: GA
    :align: center
    :width: 400px
@@ -253,9 +253,10 @@ PySpark requires Java. Please install a JDK, e.g. JDK 11 or 17, and make sure
 
     ./create_model.py -i node18_randomized/training/001.smi -o node18_randomized/models/model.empty
 
-.. note::
+Note:
+~~~~~~~~~~~~~~~~~~
 
-    The generative training and sampling steps below require an NVIDIA GPU with CUDA.
+The generative training and sampling steps below require an NVIDIA GPU with CUDA.
 
 **(5) Train the generative model with specified parameters:**
 
