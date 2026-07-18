@@ -43,9 +43,9 @@ dev = [
 ]
 
 [project.urls]
-"Bug Tracker" = "https://github.com/Ye-Buehler/GDB-ML/issues"
-Changelog = "https://github.com/Ye-Buehler/GDB-ML/blob/main/HISTORY.rst"
-Homepage = "https://github.com/Ye-Buehler/GDB-ML"
+"Bug Tracker" = "https://github.com/reymond-group/GDB-ML/issues"
+Changelog = "https://github.com/reymond-group/GDB-ML/blob/main/HISTORY.rst"
+Homepage = "https://github.com/reymond-group/GDB-ML"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
