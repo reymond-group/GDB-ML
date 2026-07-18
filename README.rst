@@ -88,6 +88,7 @@ Transformer Examples:
     cd OpenNMT-py
     git checkout Enzymatic_Transformer
     pip install -e .
+    cd ..
 
 **(4) Preprocess the data:**
 
@@ -252,6 +253,10 @@ PySpark requires Java. Please install a JDK, e.g. JDK 11 or 17, and make sure
 
     ./create_model.py -i node18_randomized/training/001.smi -o node18_randomized/models/model.empty
 
+.. note::
+
+    The generative training and sampling steps below require an NVIDIA GPU with CUDA.
+
 **(5) Train the generative model with specified parameters:**
 
 .. code-block:: bash
@@ -269,7 +274,8 @@ PySpark requires Java. Please install a JDK, e.g. JDK 11 or 17, and make sure
 
 .. code-block:: bash
 
-    # Alternatively, use the pretrained model"gdb20_models/model.trained.node18"
+    # To use the bundled pretrained model instead, replace the -m path below with:
+    # gdb20_models/model.trained.node18
     ./sample_from_model.py \
         -m node18_randomized/models/model.trained.100 \
         -n 1000000 \
