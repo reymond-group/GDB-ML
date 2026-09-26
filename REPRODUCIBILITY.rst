@@ -48,7 +48,7 @@ Graph Selection and Dataset Preparation for Transformer Training
 
 1. Generate planar molecular graphs with up to 20 nodes using GENG, excluding three- and four-membered rings.
 
-2. Retain graphs satisfying the reported structural criteria: at most three rings, no node shared by three rings, at most one seven- or eight-membered ring, no larger rings, and at least 40% divalent nodes (`MC1 < 0.6`). 
+2. Retain graphs satisfying the reported structural criteria: at most three rings, no node shared by three rings, at most one seven- or eight-membered ring, no larger rings, and at least 40% divalent nodes (`MC1 < 0.6`). These are referred to as GDB-20 graphs.
 
 3. From GDB-11, GDB-13, and GDB-17, extract graphs from molecules satisfying the polarity and functional-group criteria.
 
