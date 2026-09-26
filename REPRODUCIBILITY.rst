@@ -589,7 +589,4 @@ workflows from the released intermediate files. It includes:
 * trained model artifacts in ``transformer/gdb20_model/`` and
   ``generative_models/gdb20_models/``.
 
-This repository does not support regenerating the graph-selection step from those
-earliest intermediate objects. The graph-selection procedure is explained in the manuscript. 
-However, to improve transparency, this document additionally describes 
-the corresponding implementation in ``src/gdb_ml/graph_mapping.py``.
+The repository does not contain the earliest intermediate files required to reproduce the graph-selection step. The detailed procedure is described in the manuscript; here, we summarize the corresponding graph-selection and dataset-preparation workflow guidelines.
