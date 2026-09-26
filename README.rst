@@ -57,51 +57,6 @@ Main Codes and Files for GDB-20 Machine-Learning-Based Project:
            ├── gdb20_data
            └── gdb20_models
 
-Tested Reproduction Workflow
-============================
-
-The following procedure describes the tested release environment and may not
-exactly reproduce the original software environment used for the study.
-
-Transformer workflow
-~~~~~~~~~~~~~~~~~~~~
-
-1. Create ``gdb20`` from ``environment-gdb20.yaml`` and use
-   ``transformer/pipeline.ipynb`` to prepare and tokenize the molecular data.
-2. Construct ``src_train.txt``, ``tgt_train.txt``, ``src_val.txt``, and
-   ``tgt_val.txt`` by concatenating the corresponding released files in
-   ``transformer/gdb20_data/``.
-3. Create ``opennmt`` from ``transformer/environment-opennmt.yaml`` and install
-   the ``Enzymatic_Transformer`` OpenNMT-py fork at commit
-   ``<TESTED_OPENNMT_COMMIT>``.
-4. Run ``preprocess.py`` with sequence length and vocabulary size 3000. This
-   produces the preprocessed files under ``transformer/data/voc_exp36/``.
-5. Run ``train.py`` with the parameters listed below to create transformer
-   checkpoints, or use the released checkpoint and use it with ``translate.py`` to write
-   predictions to ``transformer/experiments/``.
-
-Generative-model workflow
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. Use ``1M_node18_train.txt`` and ``1M_node18_validation.txt`` as the input
-   training and validation datasets.
-2. Run ``create_randomized_smiles.py -n 100`` for each dataset. This creates
-   ``000.smi`` through ``099.smi`` in the training and validation directories.
-3. Run ``create_model.py`` using one randomized training file. This creates the
-   untrained model ``node18_randomized/models/model.empty``.
-4. Run ``train_model.py -e 100 --lrm ada --csn 75000`` using the untrained
-   model and randomized datasets. This produces
-   ``node18_randomized/models/model.trained.100``.
-5. Run ``sample_from_model.py -n 1000000 --with-nll`` using the trained
-   checkpoint. The sampled SMILES and their negative log-likelihoods are
-   written to ``output.txt``.
-
-Successful execution is verified by checking that the preprocessed dataset,
-transformer prediction file, generative checkpoint, and sampled SMILES output
-are created and non-empty. Generative training and sampling require an NVIDIA
-GPU with CUDA. Detailed commands, inputs, parameters, outputs, and known
-reproducibility limitations are provided in ``REPRODUCIBILITY.rst``.
-
 General Usage:
 ========================================================================================
 
