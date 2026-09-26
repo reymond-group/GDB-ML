@@ -40,6 +40,7 @@ The repository components are connected in the following order:
 7. Combine the unique transformer and RNN outputs and remove structures
    occurring in both outputs. The resulting union constitutes GDB-20s.
 
+Note that this procedure can generate a new molecular collection using the same methodology but does not exactly regenerate the released 12-billion-molecule GDB-20s collection. The exact released GDB-20s collection is provided separately through the Zenodo records linked in ``README.rst``.
 
 Software Environments
 =====================
