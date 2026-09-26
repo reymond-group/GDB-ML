@@ -28,8 +28,7 @@ The repository components are connected in the following order:
    duplicate structures using the functions in ``src/gdb_ml/``.
 
 5. For the RNN branch, use the five HAC-stratified training and validation
-   datasets supplied in ``generative_models/gdb20_data/``. These files are
-   provided as starting intermediate inputs. Randomize their SMILES with
+   datasets supplied in ``generative_models/gdb20_data/``. Randomize their SMILES with
    ``create_randomized_smiles.py``, initialize and train the models with
    ``create_model.py`` and ``train_model.py``, or use the released
    checkpoints in ``generative_models/gdb20_models/``.
