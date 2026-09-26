@@ -25,7 +25,7 @@ The repository components are connected in the following order:
 
 4. Detokenize the transformer output, retain RDKit-valid canonical SMILES,
    restrict the molecules to the target heavy-atom-count range and remove
-   duplicate structures using the functions in ``src/gdb_ml/``.
+   duplicate structures.
 
 5. For the RNN branch, use the five HAC-stratified training and validation
    datasets supplied in ``generative_models/gdb20_data/``. Randomize their SMILES with
