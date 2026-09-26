@@ -572,7 +572,7 @@ workflows from the released intermediate files. It includes:
 * trained model artifacts in ``transformer/gdb20_model/`` and
   ``generative_models/gdb20_models/``.
 
-The repository does not contain the earliest intermediate files required to reproduce the graph-selection step. The detailed procedure is described in the manuscript; the following section summarizes the relevant workflow guidelines.
+The repository does not contain the earliest intermediate files required to reproduce the graph-selection step. The detailed procedure is described in the manuscript; the following section summarizes the relevant workflow.
 
 * Generate planar molecular graphs with up to 20 nodes using GENG, excluding three- and four-membered rings.
 * Retain graphs satisfying the reported structural criteria: at most three rings, no node shared by three rings, at most one seven- or eight-membered ring, no larger rings, and at least 40% divalent nodes (`MC1 < 0.6`). These are referred to as GDB-20 graphs.
