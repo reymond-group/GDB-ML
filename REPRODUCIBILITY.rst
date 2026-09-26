@@ -42,6 +42,24 @@ The repository components are connected in the following order:
 
 Note that this procedure can generate a new molecular collection using the same methodology but does not exactly regenerate the released 12-billion-molecule GDB-20s collection. The exact released GDB-20s collection is provided separately through the Zenodo records linked in ``README.rst``.
 
+
+Graph Selection and Dataset Preparation for Transformer Training
+===========================================
+
+1. Generate planar molecular graphs with up to 20 nodes using GENG, excluding three- and four-membered rings.
+
+2. Retain graphs satisfying the reported structural criteria: at most three rings, no node shared by three rings, at most one seven- or eight-membered ring, no larger rings, and at least 40% divalent nodes (`MC1 < 0.6`). 
+
+3. From GDB-11, GDB-13, and GDB-17, extract graphs from molecules satisfying the polarity and functional-group criteria.
+
+4. Group molecules by graph, rank the graphs by frequency, and retain at most 300 molecules per graph. 
+
+5. Split the graph groups—not individual molecules—into 80% training and 20% validation sets. No graph category is shared between the two sets.
+
+6. Concatenate the SMILES of pairs of molecules for two thirds of the extracted graphs. Apply the same concatenation to their corresponding molecular SMILES, so that each input remains aligned with its target output.
+
+7. Use the selected GDB-20 graphs, up to 20 nodes, as the unlabeled generation set.
+
 Software Environments
 =====================
 
@@ -116,7 +134,6 @@ fork, not to current OpenNMT-py releases. On a CPU-only machine, omit
 ``-gpu_ranks 0`` from the training command in ``README.rst``.
 
 
-
 Repository File Map
 ===================
 
@@ -178,54 +195,6 @@ The generative model input files are located at:
     generative_models/gdb20_data/1M_node20_train_2.txt
     generative_models/gdb20_data/1M_node20_validation_1.txt
     generative_models/gdb20_data/1M_node20_validation_2.txt
-
-
-Graph Selection Before Transformer Training
-===========================================
-
-The graph-selection utilities are implemented in:
-
-.. code-block:: text
-
-    src/gdb_ml/graph_mapping.py
-
-The main class is ``GraphMapping``. The relevant default values are:
-
-.. code-block:: python
-
-    MOLS_PER_GRAPH = 10
-    TOTAL_DATAPOINTS = 2000000
-
-The function ``GraphMapping.datapoints_split`` expects a graph summary table as
-input. The table must contain at least these columns:
-
-.. code-block:: text
-
-    Key
-    Number of Values
-
-The expected meaning is:
-
-* ``Key``: the graph string used as the transformer source/input.
-* ``Number of Values``: the number of molecules associated with that graph.
-
-The selection procedure is:
-
-1. Assign ``MOLS_PER_GRAPH`` as the requested number of datapoints per graph.
-2. Keep the first ``TOTAL_DATAPOINTS / MOLS_PER_GRAPH`` graph rows from the
-   input table. With the defaults above, this corresponds to 200,000 graph rows.
-3. Assign rows to train, validation, and test using the repeated pattern
-   ``17 train : 2 validation : 1 test``.
-4. Sort the train, validation, and test subsets by ``Number of Values`` in
-   descending order.
-5. For each selected graph, keep up to ``MOLS_PER_GRAPH`` molecules. If a graph
-   has fewer than ``MOLS_PER_GRAPH`` associated molecules, all available
-   molecules are retained.
-
-The function ``GraphMapping.check_mols_from_graph`` then reads JSON dictionaries
-mapping graph keys to molecule lists, merges entries for selected graph keys,
-and truncates each selected graph to at most ``MOLS_PER_GRAPH`` molecules.
-
 
 
 Transformer Preprocessing
