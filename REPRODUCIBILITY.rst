@@ -43,23 +43,6 @@ The repository components are connected in the following order:
 Note that this procedure can generate a new molecular collection using the same methodology but does not exactly regenerate the released 12-billion-molecule GDB-20s collection. The exact released GDB-20s collection is provided separately through the Zenodo records linked in ``README.rst``.
 
 
-Graph Selection and Dataset Preparation for Transformer Training
-===========================================
-
-1. Generate planar molecular graphs with up to 20 nodes using GENG, excluding three- and four-membered rings.
-
-2. Retain graphs satisfying the reported structural criteria: at most three rings, no node shared by three rings, at most one seven- or eight-membered ring, no larger rings, and at least 40% divalent nodes (`MC1 < 0.6`). These are referred to as GDB-20 graphs.
-
-3. From GDB-11, GDB-13, and GDB-17, extract graphs from molecules satisfying the polarity and functional-group criteria.
-
-4. Group molecules by graph, rank the graphs by frequency, and retain at most 300 molecules per graph. 
-
-5. Split the graph groups—not individual molecules—into 80% training and 20% validation sets. No graph category is shared between the two sets.
-
-6. Concatenate the SMILES of pairs of molecules for two thirds of the extracted graphs. Apply the same concatenation to their corresponding molecular SMILES, so that each input remains aligned with its target output.
-
-7. Use the selected GDB-20 graphs, up to 20 nodes, as the unlabeled generation set.
-
 Software Environments
 =====================
 
@@ -589,4 +572,12 @@ workflows from the released intermediate files. It includes:
 * trained model artifacts in ``transformer/gdb20_model/`` and
   ``generative_models/gdb20_models/``.
 
-The repository does not contain the earliest intermediate files required to reproduce the graph-selection step. The detailed procedure is described in the manuscript; here, we summarize the corresponding graph-selection and dataset-preparation workflow guidelines.
+The repository does not contain the earliest intermediate files required to reproduce the graph-selection step. The detailed procedure is described in the manuscript; here, we summarize the corresponding graph-selection and dataset-preparation workflow guidelines:
+
+* Generate planar molecular graphs with up to 20 nodes using GENG, excluding three- and four-membered rings.
+* Retain graphs satisfying the reported structural criteria: at most three rings, no node shared by three rings, at most one seven- or eight-membered ring, no larger rings, and at least 40% divalent nodes (`MC1 < 0.6`). These are referred to as GDB-20 graphs.
+* From GDB-11, GDB-13, and GDB-17, extract graphs from molecules satisfying the polarity and functional-group criteria.
+* Group molecules by graph, rank the graphs by frequency, and retain at most 300 molecules per graph. 
+* Split the graph groups—not individual molecules—into 80% training and 20% validation sets. No graph category is shared between the two sets.
+* Concatenate the SMILES of pairs of molecules for two thirds of the hydrocarbon training examples. Apply the same concatenation to their corresponding molecular SMILES, so that each input remains aligned with its target output.
+* Use the selected GDB-20 graphs, up to 20 nodes, as the unlabeled generation set.
