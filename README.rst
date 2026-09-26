@@ -57,6 +57,37 @@ Main Codes and Files for GDB-20 Machine-Learning-Based Project:
            ├── gdb20_data
            └── gdb20_models
 
+Tested Reproduction Workflow
+============================
+
+The following procedure describes the tested release environment and may not
+exactly reproduce the original software environment used for the study.
+
+1. Create ``gdb20`` from ``environment-gdb20.yaml`` and use
+   ``transformer/pipeline.ipynb`` to prepare and tokenize the molecular data.
+2. Construct ``src_train.txt``, ``tgt_train.txt``, ``src_val.txt``, and
+   ``tgt_val.txt`` by concatenating the corresponding released files in
+   ``transformer/gdb20_data/``.
+3. Create ``opennmt`` from ``transformer/environment-opennmt.yaml`` and install
+   the ``Enzymatic_Transformer`` OpenNMT-py fork at commit
+   ``<TESTED_OPENNMT_COMMIT>``.
+4. Run ``preprocess.py`` with sequence length and vocabulary size 3000. This
+   produces the preprocessed files under ``transformer/data/voc_exp36/``.
+5. Run ``train.py`` with the parameters listed below to create transformer
+   checkpoints, or use the released checkpoint with ``translate.py`` to write
+   predictions to ``transformer/experiments/``.
+6. For the generative workflow, run ``create_randomized_smiles.py -n 100``,
+   ``create_model.py``, and ``train_model.py -e 100 --lrm ada --csn 75000`` in
+   that order. The final checkpoint is
+   ``node18_randomized/models/model.trained.100``. Run
+   ``sample_from_model.py -n 1000000 --with-nll`` to produce ``output.txt``.
+
+Successful execution is verified by checking that the preprocessed dataset,
+transformer prediction file, generative checkpoint, and sampled SMILES output
+are created and non-empty. Generative training and sampling require an NVIDIA
+GPU with CUDA. Detailed commands, inputs, parameters, outputs, and known
+reproducibility limitations are provided in ``REPRODUCIBILITY.rst``.
+
 General Usage:
 ========================================================================================
 
