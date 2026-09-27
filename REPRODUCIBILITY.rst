@@ -98,24 +98,25 @@ those calls are replaced by device-aware CPU/MPS handling.
 Transformer training and generation
 -----------
 
-The transformer workflow uses the legacy ``Enzymatic_Transformer`` OpenNMT-py
-fork and must be kept separate from ``gdb20`` because it requires an older
-PyTorch stack. Create the pinned environment supplied with this repository,
-then install the matching fork:
+The transformer workflow must be kept separate from the gdb20 environment 
+because it requires an older PyTorch stack. 
+Create the pinned environment supplied with this repository, 
+and install the included OpenNMT-py implementation:
 
 .. code-block:: bash
 
     conda env create -f transformer/environment-opennmt.yaml
     conda activate opennmt
-    git clone https://github.com/reymond-group/OpenNMT-py.git
-    cd OpenNMT-py
-    git checkout Enzymatic_Transformer
-    python -m pip install -e .
+    git clone https://github.com/reymond-group/GDB-ML.git
+    cd GDB-ML
+    git checkout v1.0.1
+    pip install -e ./transformer/onmt
+    cd ../..
 
-The repository's transformer commands and option names correspond to this
-fork, not to current OpenNMT-py releases. On a CPU-only machine, omit
-``-gpu_ranks 0`` from the training command in ``README.rst``.
-
+The repository's transformer commands and option names correspond to 
+the bundled OpenNMT-py implementation in transformer/onmt 
+and may differ from current OpenNMT-py releases. 
+On a CPU-only machine, omit -gpu_ranks 0 from the training command in README.rst.
 
 Repository File Map
 ===================
