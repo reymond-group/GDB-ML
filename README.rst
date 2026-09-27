@@ -99,7 +99,7 @@ Transformer Examples:
 
    - Python: 3.10.20
    - PyTorch: 1.13.1
-   - torchtext: 0.14.1
+   - torchtext: 0.4.0
    - OpenNMT-py: 1.1.1
 
 .. code-block:: bash
