@@ -83,10 +83,10 @@ Transformer Examples:
 
     conda env create -f transformer/environment-opennmt.yaml
     conda activate opennmt
-    git clone https://github.com/reymond-group/OpenNMT-py.git
-    cd OpenNMT-py
-    git checkout Enzymatic_Transformer
-    pip install -e .
+    git clone https://github.com/reymond-group/GDB-ML.git
+    cd GDB-ML
+    git checkout v1.0.1
+    pip install -e ./transformer/onmt
     cd ..
 
 **(4) Preprocess the data:**
