@@ -87,7 +87,7 @@ Transformer Examples:
     cd GDB-ML
     git checkout v1.0.1
     pip install -e ./transformer/onmt
-    cd ..
+    cd ../..
 
 **(4) Preprocess the data:**
 
