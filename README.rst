@@ -79,6 +79,8 @@ Transformer Examples:
    - torchvision: 0.22.0
    - torchaudio: 2.7.0
 
+.. code-block:: bash
+
    conda env create -f environment-gdb20.yaml
    conda activate gdb20
 
