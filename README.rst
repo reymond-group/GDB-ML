@@ -67,6 +67,19 @@ Transformer Examples:
 
 .. code-block:: bash
 
+   # Specific versions used:
+
+   - Python: 3.10.20
+   - Python: 3.10.20
+   - numpy: 1.26.0
+   - pandas: 2.2.3
+   - rdkit: 2024.09.5
+   - openbabel: 3.1.1
+   - pandarallel: 1.6.5
+   - pytorch: 2.7.0
+   - torchvision: 0.22.0
+   - torchaudio: 2.7.0
+
     conda env create -f environment-gdb20.yaml
     conda activate gdb20
 
