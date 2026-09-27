@@ -4,7 +4,7 @@ Reproducibility
 
 This document describes how the files and scripts in this repository map to the
 workflow described in the manuscript. All paths below are relative to the root
-of this repository.
+of this repository. We do not claim that the dependency versions specified in this repository exactly reconstruct the original study environment; they define a precise environment for future reproductions of the released workflow.
 
 End-to-End Execution Sequence
 =====================
