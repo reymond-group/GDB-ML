@@ -39,12 +39,9 @@ End-to-End Execution Sequence
    ``create_model.py`` and ``train_model.py``, or use the released
    checkpoints in ``generative_models/gdb20_models/``.
 
-10. Generate RNN SMILES with ``sample_from_model.py`` and apply the same
-   validity, canonicalization, heavy-atom-count and within-model
-   deduplication procedures.
+10. Generate RNN SMILES with ``sample_from_model.py`` and apply the same validity, canonicalization, heavy-atom-count and within-model deduplication procedures.
 
-11. Combine the unique transformer and RNN outputs and remove structures
-   occurring in both outputs. The resulting union constitutes GDB-20s.
+11. Combine the unique transformer and RNN outputs and remove structures occurring in both outputs. The resulting union constitutes GDB-20s.
 
 Note that this procedure can generate a new molecular collection using the same methodology but does not exactly regenerate the released 12-billion-molecule GDB-20s collection. The exact released GDB-20s collection is provided separately through the Zenodo records linked in ``README.rst``.
 
