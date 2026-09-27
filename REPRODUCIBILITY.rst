@@ -61,17 +61,6 @@ Create and activate the environment from the repository root:
     conda env create -f environment-gdb20.yaml
     conda activate gdb20
 
-The source-layout package can then be installed in editable mode. ``--no-deps``
-keeps the Conda-resolved packages from ``environment-gdb20.yaml`` authoritative:
-
-.. code-block:: bash
-
-    python -m pip install --no-deps -e .
-
-This editable installation is optional when ``src`` is added to ``sys.path``
-by the pipeline notebook, but it makes ``gdb_ml`` importable from any working
-directory in the active environment.
-
 ``create_randomized_smiles.py`` uses PySpark and therefore requires Java.
 Install a JDK after activating ``gdb20`` and verify it before running that
 script:
