@@ -70,7 +70,6 @@ Transformer Examples:
    # Specific versions used:
 
    - Python: 3.10.20
-   - Python: 3.10.20
    - numpy: 1.26.0
    - pandas: 2.2.3
    - rdkit: 2024.09.5
@@ -80,8 +79,8 @@ Transformer Examples:
    - torchvision: 0.22.0
    - torchaudio: 2.7.0
 
-    conda env create -f environment-gdb20.yaml
-    conda activate gdb20
+   conda env create -f environment-gdb20.yaml
+   conda activate gdb20
 
 **(2) Follow the pipeline and tokenize the SMILES:**
 
