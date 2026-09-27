@@ -83,10 +83,10 @@ Transformer Examples:
 
    # Specific versions used:
 
-   # - Python: 3.10.20
-   # - PyTorch: 1.13.1
-   # - torchtext: 0.14.1
-   # - OpenNMT-py: 1.1.1
+   - Python: 3.10.20
+   - PyTorch: 1.13.1
+   - torchtext: 0.14.1
+   - OpenNMT-py: 1.1.1
 
 .. code-block:: bash
 
