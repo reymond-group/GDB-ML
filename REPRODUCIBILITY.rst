@@ -9,35 +9,41 @@ of this repository. We do not claim that the dependency versions specified in th
 End-to-End Execution Sequence
 =====================
 
-The repository components are connected in the following order:
+1. The repository components are connected in the following order:
 
-1. Concatenate the split files in ``transformer/gdb20_data/`` to form
+2. Create and activate the required Conda environment.
+
+3. Prepare and tokenize the input data following transformer/pipeline.ipynb.
+
+4. Install the bundled OpenNMT-py implementation from transformer/onmt/.
+
+5. Concatenate the split files in ``transformer/gdb20_data/`` to form
    ``src_train.txt``, ``tgt_train.txt``, ``src_val.txt`` and
    ``tgt_val.txt``.
 
-2. Run ``transformer/preprocess.py`` with the settings given above to
+6. Run ``transformer/preprocess.py`` with the settings given above to
    produce the OpenNMT preprocessed training and validation data.
 
-3. Run ``transformer/train.py`` or load the released checkpoint from
+7. Run ``transformer/train.py`` or load the released checkpoint from
    ``transformer/gdb20_model/``, and then use ``transformer/translate.py``
    with the specified beam-search settings to generate molecular SMILES
    from the source graphs.
 
-4. Detokenize the transformer output, retain RDKit-valid canonical SMILES,
+8. Detokenize the transformer output, retain RDKit-valid canonical SMILES,
    restrict the molecules to the target heavy-atom-count range and remove
    duplicate structures.
 
-5. For the RNN branch, use the five HAC-stratified training and validation
+9. For the RNN workflow, use the five HAC-stratified training and validation
    datasets supplied in ``generative_models/gdb20_data/``. Randomize their SMILES with
    ``create_randomized_smiles.py``, initialize and train the models with
    ``create_model.py`` and ``train_model.py``, or use the released
    checkpoints in ``generative_models/gdb20_models/``.
 
-6. Generate RNN SMILES with ``sample_from_model.py`` and apply the same
+10. Generate RNN SMILES with ``sample_from_model.py`` and apply the same
    validity, canonicalization, heavy-atom-count and within-model
    deduplication procedures.
 
-7. Combine the unique transformer and RNN outputs and remove structures
+11. Combine the unique transformer and RNN outputs and remove structures
    occurring in both outputs. The resulting union constitutes GDB-20s.
 
 Note that this procedure can generate a new molecular collection using the same methodology but does not exactly regenerate the released 12-billion-molecule GDB-20s collection. The exact released GDB-20s collection is provided separately through the Zenodo records linked in ``README.rst``.
