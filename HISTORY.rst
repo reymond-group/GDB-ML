@@ -17,7 +17,8 @@ Unreleased
 * Updated the Python package metadata and direct dependency constraints to
   match the supported Python 3.10 environment.
 
-## 1.0.1 (2026-09-28)
-## 1.0.0 (2026-09-02)
+1.0.1 (2026-09-28)
+
+1.0.0 (2026-09-02)
 
 
